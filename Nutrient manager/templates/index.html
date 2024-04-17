@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <h1>kcal-ulator</h1>
+	<h3>Add ingredients to a plan by referring to the list of food IDs below and the</br>mass in grams in your
+	recipe, then press "Calculate" to get the nutritional information of your meal!</h3>
+	<h2> Create plan</h2>
+	<form action="/" method="post">
+		<label> FoodID: </label>
+		<input type="number" name="rid"/> 
+		<label> Quantity in grams: </label>
+		<input type="number" name="grams"/>
+		<input type="submit" value="add ingredient"/>
+	</form>
+	
+	<form action="/calk" method="post">
+        <input type="submit" value="Calculate">
+    </form>
+	
+		<h2> Clear plan </h2>
+	<form action="/delete" method="post">
+		<input type="submit" value="clear"/>
+	</form>
+	
+	
+	<hr />
+	<table>
+	  <tr>
+	    <th>Food ID</th>
+		<th>Quantity in grams</th>
+	  </tr>
+	  {% for rec in recs %}
+	    <tr>
+		  <td>{{ rec[0] }}</td>
+		  <td>{{ rec[1] }}</td>	  
+		</tr>
+	  {% endfor %}
+	</table>
+	<h2>Total kcal: {{ kcal }}</h2></br>
+	<h2>Total protein: {{ protein }}</h2></br>
+	<h2>Total fats: {{ fats }}</h2></br>
+	<h2>Total sugars: {{ sugars }}</h2></br>
+	<h2>Total carbs: {{ carbs }}</h2></br>
+	
+	<h2>Food IDs</h2>
+	<h4>ID, Food name,    recomended serving size</h4>
+    <h4>1	Chicken breast	1pc, 200g<br>
+2	Chicken thigh	2pc, 200g<br>
+3	Chicken wing	4pc, 360g<br>
+4	Pork belly	100g<br>
+5	Pork loin	120g<br>
+6	Ground pork	200g<br>
+7	Beef flank	250g<br>
+8	Beef sirloin	200g<br>
+9	Ground beef	200g<br>
+10	Luncheon meat	100g<br>
+11	Hot dog	2pc, 100g<br>
+12	Bacon	3pc, 75g<br>
+13	Salmon	200g<br>
+14	Canned tuna	1can, 150g<br>
+15	Cod	200g<br>
+16	Batang	200g<br>
+17	Shrimp	250g<br>
+18	Tofu	150g<br>
+19	Fried egg	2, 100g<br>
+20	Plant based meat	200g<br>	
+21	Broccoli	100g<br>
+22	Carrots	70g<br>
+23	Pumpkin	120g<br>
+24	Spinach	60g<br>
+25	Tomato	120g<br>
+26	Potato	170g<br>
+27	Onion	120g<br>
+28	Shallot	30g<br>
+29	Iceburg lettuce	70g<br>
+30	Chinese cabbage	70g<br>
+31	Button mushroom	70g<br>
+32	White radish	120g<br>
+33	garlic	3cloves, 15g<br>
+34	Bell pepper	120g<br>
+35	Cucumber	25g<br>
+36	Bok choy	70g<br>
+37	Eggplant	120g<br>
+38	Cauliflower	100g<br>
+39	Corn	70g<br>
+40	Kangkong	40g<br>
+41	White rice	200g<br>
+42	Brown rice	200g<br>
+43	White bread	2pc, 50g<br>
+44	Wholemeal bread	2pc, 50g<br>
+45	Pasta	120g<br>
+46	Maggi	100g<br>
+47	Ramyeon	100g<br>
+48	Yellow noodles	160g<br>
+49	Oats	150g<br>
+50	Sugar	1tsp, 4g<br>
+51	Table salt	1tsp, 6g<br>
+52	Mayonneise	1tbsp, 15g<br>
+53 Ketchup	1tbsp, 15g<br>
+54  salted butter	1 tbsp, 15g<br>
+55 Soy sauce	1 tbsp, 15g<br>
+56	Seasame sauce	1 tbsp, 15g<br>
+57	Nacho cheese	1 tbsp, 15g<br>
+58	Full cream	1 cup, 240g<br></h4>
+
+<h2>
+Recomended daily nutrition intake
+</h2>
+ <table>
+        <th>
+            <tr>
+                <th>Bodytype</th>
+                <th>kcal</th>
+                <th>Protein</th>
+				<th>Fats</th>
+				<th>Sugars</th>
+				<th>Carbs</th>
+            </tr>
+        </th>
+        <tbody>
+            <tr>
+                <td>Active Male</td>
+                <td>2800</td>
+                <td>110g</td>
+				<td>70g</td>
+				<td>35g</td>
+				<td>275g</td>
+            </tr>
+            <tr>
+                <td>Active Female</td>
+                <td>2200</td>
+                <td>100g</td>
+				<td>70g</td>
+				<td>25g</td>
+				<td>220g</td>
+            </tr>
+			<tr>
+                <td>Average Male</td>
+                <td>2500</td>
+                <td>60g</td>
+				<td>50g</td>
+				<td>35g</td>
+				<td>250g</td>
+            </tr>
+			<tr>
+                <td>Average Female</td>
+                <td>2000</td>
+                <td>55g</td>
+				<td>50g</td>
+				<td>25g</td>
+				<td>200g</td>
+            </tr>
+			<tr>
+                <td>Sedantary Male</td>
+                <td>2200</td>
+                <td>60g</td>
+				<td>40g</td>
+				<td>35g</td>
+				<td>220g</td>
+            </tr>
+			<tr>
+                <td>Sedentary Male</td>
+                <td>1900</td>
+                <td>55g</td>
+				<td>40g</td>
+				<td>35g</td>
+				<td>180g</td>
+            </tr>
+        </tbody>
+    </table>
+  </body>
+</html> 
